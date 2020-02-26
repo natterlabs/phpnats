@@ -1,4 +1,5 @@
 <?php
+
 namespace Nats;
 
 use Nats\Encoders\Encoder;
@@ -22,7 +23,7 @@ class EncodedConnection extends Connection
     /**
      * EncodedConnection constructor.
      *
-     * @param ConnectionOptions           $options Connection options object.
+     * @param ConnectionOptions $options Connection options object.
      * @param \Nats\Encoders\Encoder|null $encoder Encoder to use with the payload.
      */
     public function __construct(ConnectionOptions $options = null, Encoder $encoder = null)
@@ -36,7 +37,7 @@ class EncodedConnection extends Connection
      *
      * @param string $subject Message topic.
      * @param string $payload Message data.
-     * @param string $inbox   Message inbox.
+     * @param string $inbox Message inbox.
      *
      * @return void
      */
@@ -49,9 +50,8 @@ class EncodedConnection extends Connection
     /**
      * Subscribes to an specific event given a subject.
      *
-     * @param string   $subject  Message topic.
+     * @param string $subject Message topic.
      * @param \Closure $callback Closure to be executed as callback.
-     *
      * @return string
      */
     public function subscribe($subject, \Closure $callback)
@@ -66,10 +66,9 @@ class EncodedConnection extends Connection
     /**
      * Subscribes to an specific event given a subject and a queue.
      *
-     * @param string   $subject  Message topic.
-     * @param string   $queue    Queue name.
+     * @param string $subject Message topic.
+     * @param string $queue Queue name.
      * @param \Closure $callback Closure to be executed as callback.
-     *
      * @return void
      */
     public function queueSubscribe($subject, $queue, \Closure $callback)

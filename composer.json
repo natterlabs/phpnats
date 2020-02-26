@@ -1,12 +1,11 @@
 {
-    "name": "repejota/nats",
+    "name": "workfront/nats",
     "description": "A nats.io client in PHP",
     "type": "library",
     "minimum-stability": "dev",
     "license": "MIT",
-    "require": {
-        "ircmaxell/random-lib": "^1.2"
-    },
+    "version": "2.2.0",
+    "require": {},
     "require-dev": {
         "phpunit/phpunit": "5.*",
         "phpspec/phpspec": "^3.0",
@@ -36,6 +35,12 @@
             "email": "glopezdetorre@gmail.com",
             "homepage": "http://gorka.io",
             "role": "Developer"
+        },
+        {
+            "name": "Irek Kubicki",
+            "email": "irekkubicki@workfront.com",
+            "homepage": "http://www.workfront.com",
+            "role": "Software Principal Engineer"
         }
     ],
     "autoload": {

@@ -1,4 +1,5 @@
 <?php
+
 namespace Nats;
 
 /**
@@ -41,10 +42,10 @@ class Message
     /**
      * Message constructor.
      *
-     * @param string     $subject Message subject.
-     * @param string     $body    Message body.
-     * @param string     $sid     Message Sid.
-     * @param Connection $conn    Message Connection.
+     * @param string $subject Message subject.
+     * @param string $body Message body.
+     * @param string $sid Message Sid.
+     * @param Connection $conn Message Connection.
      */
     public function __construct($subject, $body, $sid, Connection $conn)
     {
@@ -54,12 +55,10 @@ class Message
         $this->setConn($conn);
     }
 
-
     /**
      * Set subject.
      *
      * @param string $subject Subject.
-     *
      * @return $this
      */
     public function setSubject($subject)
@@ -68,7 +67,6 @@ class Message
 
         return $this;
     }
-
 
     /**
      * Get subject.
@@ -80,12 +78,10 @@ class Message
         return $this->subject;
     }
 
-
     /**
      * Set body.
      *
      * @param string $body Body.
-     *
      * @return $this
      */
     public function setBody($body)
@@ -93,7 +89,6 @@ class Message
         $this->body = $body;
         return $this;
     }
-
 
     /**
      * Get body.
@@ -105,12 +100,10 @@ class Message
         return $this->body;
     }
 
-
     /**
      * Set Ssid.
      *
      * @param string $sid Ssid.
-     *
      * @return $this
      */
     public function setSid($sid)
@@ -118,7 +111,6 @@ class Message
         $this->sid = $sid;
         return $this;
     }
-
 
     /**
      * Get Ssid.
@@ -130,7 +122,6 @@ class Message
         return $this->sid;
     }
 
-
     /**
      * String representation of a message.
      *
@@ -141,12 +132,10 @@ class Message
         return $this->getBody();
     }
 
-
     /**
      * Set Conn.
      *
      * @param Connection $conn Connection.
-     *
      * @return $this
      */
     public function setConn(Connection $conn)
@@ -154,7 +143,6 @@ class Message
         $this->conn = $conn;
         return $this;
     }
-
 
     /**
      * Get Conn.
@@ -166,12 +154,10 @@ class Message
         return $this->conn;
     }
 
-
     /**
      * Allows you reply the message with a specific body.
      *
      * @param string $body Body to be set.
-     *
      * @return void
      */
     public function reply($body)

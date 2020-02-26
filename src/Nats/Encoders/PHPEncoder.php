@@ -1,4 +1,5 @@
 <?php
+
 namespace Nats\Encoders;
 
 /**
@@ -16,7 +17,6 @@ class PHPEncoder implements Encoder
      * Encodes a message to PHP.
      *
      * @param string $payload Message to decode.
-     *
      * @return mixed
      */
     public function encode($payload)
@@ -29,7 +29,6 @@ class PHPEncoder implements Encoder
      * Decodes a message from PHP.
      *
      * @param string $payload Message to decode.
-     *
      * @return mixed
      */
     public function decode($payload)

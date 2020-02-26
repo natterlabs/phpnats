@@ -1,27 +1,16 @@
 phpnats
 =======
 
-**Travis**
-
-| Master  | Develop |
-| ------------- | ------------- |
-| [![Build Status](https://travis-ci.org/repejota/phpnats.png?branch=master)](https://travis-ci.org/repejota/phpnats)  | [![Build Status](https://travis-ci.org/repejota/phpnats.png?branch=develop)](https://travis-ci.org/repejota/phpnats)  |
-
-**Coverage**
-
-| Master  | Develop |
-| ------------- | ------------- |
-| [![Coverage Status](https://coveralls.io/repos/repejota/phpnats/badge.svg?branch=master)](https://coveralls.io/r/repejota/phpnats?branch=master) | [![Coverage Status](https://coveralls.io/repos/repejota/phpnats/badge.svg?branch=develop)](https://coveralls.io/r/repejota/phpnats?branch=develop)  |
-
 Introduction
 ------------
 
 A PHP client for the [NATS messaging system](https://nats.io).
+This fork of phpnats by repejota that supports more recent versions of NATS (2.2.0-beta) and contains little improvements to fit more into PHP7 world.
 
 Requirements
 ------------
 
-* php 5.6+
+* php 7.1+
 * [gnatsd](https://github.com/apcera/gnatsd)
 
 
@@ -41,7 +30,7 @@ Now let's tell composer about our project's dependancies, in this case, PHPNats.
 ```
 {
   "require": {
-    "repejota/nats": "dev-master"
+    "workfront/nats": "2.2.0"
   }
 }
 ```
@@ -153,10 +142,10 @@ Developer's Information
 
 ### Releases
 
-* [Latest stable](https://github.com/repejota/phpnats/tree/master)
-* [Latest dev](https://github.com/repejota/phpnats/tree/develop)
+* [Latest stable](https://github.com/Workfront/phpnats/tree/master)
+* [Latest dev](https://github.com/Workfront/phpnats/tree/develop)
 
-* [PHPNats on Packagist](https://packagist.org/packages/repejota/nats)
+* [PHPNats on Packagist](https://packagist.org/packages/Workfront/phpnats)
 
 ### Tests
 

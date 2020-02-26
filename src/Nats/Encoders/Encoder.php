@@ -1,4 +1,5 @@
 <?php
+
 namespace Nats\Encoders;
 
 /**
@@ -14,7 +15,6 @@ interface Encoder
      * Encodes a message.
      *
      * @param string $payload Message to decode.
-     *
      * @return mixed
      */
     public function encode($payload);
@@ -23,7 +23,6 @@ interface Encoder
      * Decodes a message.
      *
      * @param string $payload Message to decode.
-     *
      * @return mixed
      */
     public function decode($payload);

@@ -10,3 +10,6 @@ cover
 build
 .idea
 coverage
+.settings
+.project
+.buildpath

@@ -1,4 +1,5 @@
 <?php
+
 namespace Nats;
 
 /**
@@ -78,6 +79,27 @@ class ServerInfo
      * @var integer
      */
     private $maxPayload;
+    
+    /**
+     * Protocol version
+     *
+     * @var integer
+     */
+    private $proto;
+    
+    /**
+     * Protocol version
+     *
+     * @var integer
+     */
+    private $clientId;
+    
+    /**
+     * Protocol version
+     *
+     * @var integer
+     */
+    private $jetstream;
 
     /**
      * Connection URL list
@@ -85,8 +107,7 @@ class ServerInfo
      * @var array
      */
     private $connectURLs;
-
-
+    
     /**
      * ServerInfo constructor.
      *
@@ -102,13 +123,17 @@ class ServerInfo
         $this->setPort($data['port']);
         $this->setVersion($data['version']);
         $this->setGoVersion($data['go']);
-        $this->setAuthRequired(isset($data['auth_required']) ? $data['auth_required'] : false);
-        $this->setTLSRequired(isset($data['tls_required']) ? $data['tls_required'] : false);
-        $this->setTLSVerify(isset($data['tls_verify']) ? $data['tls_verify'] : false);
+        $this->setAuthRequired($data['auth_required'] ?? false);
+        $this->setTLSRequired($data['tls_required'] ?? false);
+        $this->setTLSVerify($data['tls_verify'] ?? false);
         $this->setMaxPayload($data['max_payload']);
+        
+        $this->setProtocol($data['proto'] ?? 0);
+        $this->setClientId($data['client_id'] ?? null);
+        $this->setJetstream($data['jetstream'] ?? 0);
 
         if (version_compare($data['version'], '1.1.0') === -1) {
-            $this->setSSLRequired($data['ssl_required']);
+            $this->setSSLRequired($data['ssl_required'] ?? false);
         }
     }
 
@@ -126,7 +151,6 @@ class ServerInfo
      * Set the server ID
      *
      * @param string $serverID Server ID.
-     *
      * @return void
      */
     public function setServerID($serverID)
@@ -148,7 +172,6 @@ class ServerInfo
      * Set the server host name or ip.
      *
      * @param string $host Server host.
-     *
      * @return void
      */
     public function setHost($host)
@@ -170,7 +193,6 @@ class ServerInfo
      * Set server port number.
      *
      * @param integer $port Server port number.
-     *
      * @return void
      */
     public function setPort($port)
@@ -192,7 +214,6 @@ class ServerInfo
      * Set server version number.
      *
      * @param string $version Server version number.
-     *
      * @return void
      */
     public function setVersion($version)
@@ -214,7 +235,6 @@ class ServerInfo
      * Set the golang version number.
      *
      * @param string $goVersion Go version number.
-     *
      * @return void
      */
     public function setGoVersion($goVersion)
@@ -236,7 +256,6 @@ class ServerInfo
      * Set if the server requires authorization.
      *
      * @param boolean $authRequired If auth is required.
-     *
      * @return void
      */
     public function setAuthRequired($authRequired)
@@ -258,7 +277,6 @@ class ServerInfo
      * Set if server requires TLS.
      *
      * @param boolean $TLSRequired If TLS is required.
-     *
      * @return void
      */
     public function setTLSRequired($TLSRequired)
@@ -280,7 +298,6 @@ class ServerInfo
      * Set if server verifies TLS certificate.
      *
      * @param boolean $TLSVerify If TLS certificate is verified.
-     *
      * @return void
      */
     public function setTLSVerify($TLSVerify)
@@ -302,7 +319,6 @@ class ServerInfo
      * Set if SSL is required.
      *
      * @param boolean $SSLRequired If SSL is required.
-     *
      * @return void
      */
     public function setSSLRequired($SSLRequired)
@@ -324,12 +340,74 @@ class ServerInfo
      * Set the max size of the payload.
      *
      * @param integer $maxPayload Size in bytes.
-     *
      * @return void
      */
     public function setMaxPayload($maxPayload)
     {
         $this->maxPayload = $maxPayload;
+    }
+    
+    /**
+     * Get the protocol version.
+     *
+     * @return integer Protocol version.
+     */
+    public function getProto()
+    {
+        return $this->proto;
+    }
+    
+    /**
+     * Set the protocol version.
+     *
+     * @param integer $proto Protocol version.
+     * @return void
+     */
+    public function setProto($proto)
+    {
+        $this->proto = $proto;
+    }
+    
+    /**
+     * Get the Client ID.
+     *
+     * @return integer Client ID.
+     */
+    public function getClientId()
+    {
+        return $this->clientId;
+    }
+    
+    /**
+     * Set the Client ID.
+     *
+     * @param integer $proto Client ID.
+     * @return void
+     */
+    public function setClientId($clientId)
+    {
+        $this->clientId = $clientId;
+    }
+    
+    /**
+     * Get the jetstream flag.
+     *
+     * @return integer Jetstream flag.
+     */
+    public function getJetstream()
+    {
+        return $this->jetstream;
+    }
+    
+    /**
+     * Set the jetstream flag.
+     *
+     * @param integer $jetstream Jetstream flag.
+     * @return void
+     */
+    public function setJetstream($jetstream)
+    {
+        $this->jetstream = $jetstream;
     }
 
     /**
@@ -346,7 +424,6 @@ class ServerInfo
      * Set the server connection URLs.
      *
      * @param array $connectURLs List of server connection urls.
-     *
      * @return void
      */
     public function setConnectURLs(array $connectURLs)
