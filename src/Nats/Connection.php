@@ -488,6 +488,7 @@ class Connection
         $msg = 'SUB '.$subject.' '.$sid;
         $this->send($msg);
         $this->subscriptions[$sid] = $callback;
+        $this->registeredSubscriptions[$subject] = [null, $callback];
         return $sid;
     }
 
@@ -505,6 +506,7 @@ class Connection
         $msg = 'SUB '.$subject.' '.$queue.' '.$sid;
         $this->send($msg);
         $this->subscriptions[$sid] = $callback;
+        $this->registeredSubscriptions[$subject] = [$queue, $callback];
         return $sid;
     }
 
@@ -596,16 +598,23 @@ class Connection
      */
     public function reconnect($resubscribe = false)
     {
+        $sids = [];
         $this->reconnects += 1;
         $this->close();
         $this->connect($this->timeout);
         if ($resubscribe) {
             if ($this->isConnected()) {
-                foreach ($this->registeredSubscriptions as $subject => $callback) {
-                    $this->subscribe($subject, $callback);
+                foreach ($this->registeredSubscriptions as $subject => $info) {
+                    if ($info[0] === null) {
+                        $sids[$subject] = $this->subscribe($subject, $info[1]);
+                    }
+                    else {
+                        $sids[$subject] = $this->queueSubscribe($subject, $info[0], $info[1]);
+                    }
                 }
             }
         }
+        return $sids;
     }
 
     /**
