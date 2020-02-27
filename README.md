@@ -30,7 +30,7 @@ Now let's tell composer about our project's dependancies, in this case, PHPNats.
 ```
 {
   "require": {
-    "workfront/nats": "2.2.2"
+    "workfront/nats": "^2.2.2"
   }
 }
 ```
