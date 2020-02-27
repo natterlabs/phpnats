@@ -180,7 +180,7 @@ class Connection
             return false;
         }
         list($number, $decimals) = $this->getNumberAndDecimals($timeout);
-        return stream_set_timeout($this->streamSocket, $number, $micro);
+        return stream_set_timeout($this->streamSocket, $number, $decimals);
     }
 
     /**
