@@ -128,7 +128,7 @@ class ServerInfo
         $this->setTLSVerify($data['tls_verify'] ?? false);
         $this->setMaxPayload($data['max_payload']);
         
-        $this->setProtocol($data['proto'] ?? 0);
+        $this->setProto($data['proto'] ?? 0);
         $this->setClientId($data['client_id'] ?? null);
         $this->setJetstream($data['jetstream'] ?? 0);
 
