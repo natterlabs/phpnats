@@ -172,7 +172,7 @@ class Connection
      */
     public function setStreamTimeout($timeout)
     {
-        if (!is_numeric($seconds)) {
+        if (!is_numeric($timeout)) {
             return false;
         }
         $this->timeout = $timeout;
